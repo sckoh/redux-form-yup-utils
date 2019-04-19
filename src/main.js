@@ -1,12 +1,20 @@
-import ms from 'ms';
-import lunchtime from './lunchtime.js';
-import millisecondsUntil from './millisecondsUntil.js';
+import set from 'lodash/set';
 
-export default function howLongUntilLunch(hours, minutes) {
-	// lunch is at 12.30
-	if (hours === undefined) hours = 12;
-	if (minutes === undefined) minutes = 30;
+export const syncValidate = schema => (values, props) => {
+  const formErrors = {};
+  try {
+    schema.validateSync(values, {
+      abortEarly: false,
+      context: {
+        props,
+      },
+    });
+  } catch (errors) {
+    errors.inner.forEach((error) => {
+      set(formErrors, error.path, error.message);
+    });
+  }
+  return formErrors;
+};
 
-	var millisecondsUntilLunchTime = millisecondsUntil(lunchtime(hours, minutes));
-	return ms(millisecondsUntilLunchTime, { long: true });
-}
+export default {};
