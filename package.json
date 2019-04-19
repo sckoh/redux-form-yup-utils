@@ -1,6 +1,6 @@
 {
   "name": "redux-form-yup-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/redux-form-yup-utils.cjs.js",
   "module": "dist/redux-form-yup-utils.esm.js",
   "browser": "dist/redux-form-yup-utils.umd.js",
