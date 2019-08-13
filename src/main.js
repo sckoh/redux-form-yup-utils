@@ -7,6 +7,7 @@ export const syncValidate = schema => (values, props) => {
       abortEarly: false,
       context: {
         props,
+        values,
       },
     });
   } catch (errors) {
